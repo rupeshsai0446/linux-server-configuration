@@ -1,17 +1,18 @@
-# linux-server-configuration
-Linux-Server-Configuration
-About
-This is the Udacity project 6 about the Configuring the Linux the server.
+# Linux-server-configuration
 
-Server Details
-Server IP Address 13.232.42.245
+## About:
+This is the Udacity project 6 about  Configuring the Linux the server.In this project we create an IP address for an project. Upon entering that address in the url of webbrowser respective app is opened. 
 
-Hosted site Url http://13.232.42.245.xip.io/
+## Server Details:
+Server IP Address: 13.232.42.245
 
-Grader Password
+Hosted site Url:  http://13.232.42.245.xip.io/
+
+## Grader Password:
 unix
 
-Grader Key
+## Grader Key:
+
 -----BEGIN RSA PRIVATE KEY-----
 MIIEpgIBAAKCAQEAuOQkQeP5971+VzJ6E6RbXYNWsBRVbjVjj2vC4PjJaOeX16r6
 xhTmCyc2U3LcxAVXsDDHzThoEIZhQe1hWSIAUOqlMAcvh/WDQmRxLUnSGFTPxpM7
@@ -40,84 +41,116 @@ dPIDhsQOnL0mEnTGcNHUwK3NNF+cjri4zitnrcKOLorxjUn0gr9DoPKtE1CGnaek
 Ko2IJt9RjQrNt+ow85OWD6VHFPTmyTUqyPrd82ONPwrtzzpq9Tme2ZiU
 -----END RSA PRIVATE KEY-----
 
-How to connect as grader:
+## How to connect as grader:
 save private key provided in your local machine and run the following command
 
 ssh -i path/to/privatekey -p 2200 grader@13.232.42.245
   
-Configuring Linux Server
-Updating all packages
+# Configuring Linux Server:
+
+## Updating all packages:
+
 sudo apt-get update
+
 sudo apt-get upgrade
-Creating grader User:
+
+## Creating grader User:
+
 sudo adduser grader
+
 This will add new user
 
 sudo nano /etc/sudoers
+
 Below the Root user append the following line
 
 grader  ALL=(ALL:ALL) ALL
+
 This will grant sudo permission to grader
 
-Creating a ssh key pair for grader
+## Create a ssh key pair for grader:
+
 On your local machine in terminal/command prompt
 
 ssh-keygen
+
 This will generate public and private ssh keys which is saved to .ssh folder
 
 Then in your virtual machine change to newly created user
 
 sudo su - grader
+
 Create a new directory .ssh and new file authorized_keys in that directory
 
 mkdir .ssh
+
 sudo nano .ssh/authorized_keys
+
 Copy the public key with .pub extension to authorized_keys and save the file
 
 chmod 700 .ssh
+
 chmod 644 .ssh/authorized_keys
+
 700 will give read write and execute permission to user.
+
 644 prevent other user from writting in to file. Then restart ssh server
+
 sudo service ssh restart
+
 Now from your log in to grader with private key generated
 
 ssh -i .ssh/id_rsa grader@ipaddress 
-Changing the ssh port to 2200
+
+## Change the ssh port to 2200:
+
 sudo nano /etc/ssh/sshd_config
+
 Change port 22 to port 2200
 
 Restart the ssh server
 
 service ssh restart
+
 Note: Before Logging using ssh add custom TCP port 2200 under lightsaail firewall in networking tab in lightsail instance console
 
 Now Login using command like this
 
 ssh -i .ssh/id_rsa -p 2200 grader@ipaddress
-Disabling ssh login as root
+
+## Disabling ssh login as root:
+
 sudo nano /etc/ssh/sshd_config
 
 make change PermitRootLogin no
 
-Configurating Ufw firewall
+## Configurating Ufw firewall:
+
 sudo ufw allow 2200/tcp
+
 sudo ufw allow 80/tcp
+
 sudo ufw allow 123/udp
+
 sudo ufw enable
+
 This will allow all required ports and enables the ufw
 
 After that
 
 sudo ufw status
+
 It will display all allowed ports
 
-Changing time Zone
+## Changing time Zone:
+
 sudo dpkg-reconfigure tzdata
 
 select none from list and then select utc.
 
-Installing Apache2
-In terminal
+## Installing Apache2:
+
+In terminal, type the below commands
 
 sudo apt-get install apache2
 
@@ -130,7 +163,8 @@ Enable mod_wsgi
 sudo a2enmod wsgi
 
 Setting up your flask application to work with apache2
-Creating a flask app
+
+## Creating a flask app:
 
 In /var/www directory create a new folder sudo mkdir FlaskApp
 
@@ -151,13 +185,16 @@ Then rename your project file to __init__.py
 Error : While accesssing the client_secrets.json file
 
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
+
 json_url = os.path.join(PROJECT_ROOT, 'client_secrets.json')
+
 CLIENT_ID = json.load(open(json_url))['web']['client_id']
 Use json_url instead client_secrets.json in script
 
 Reffered from stack overflow
 
-Install and configuring postgresql for project
+## Install and configuring postgresql for project:
+
 Install Postgres sudo apt-get install postgresql
 
 login to postgres sudo su - postgres
@@ -178,11 +215,14 @@ Give schema permission to user catalog GRANT ALL ON SCHEMA public TO catalog;
 
 exit from db \q exit from postgres exit
 
-Change the database connection in both db_setup.py and init.py as engine = create_engine('postgresql://catalog:password@localhost/catalog')
+Change the database connection in both db_setup.py and init.py as follows
+
+engine = create_engine('postgresql://catalog:password@localhost/catalog')
 
 Now you are ready with your applicatiom
 
-Configure and Enable a New Virtual Host
+## Configure and Enable a New Virtual Host:
+
 sudo nano /etc/apache2/sites-available/FlaskApp.conf
 
 In this add the following code
@@ -204,11 +244,12 @@ In this add the following code
  	LogLevel warn
  	CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
+
 Enable the virtual host sudo a2ensite FlaskApp
 
 Disabling the default apache2 page sudo a2dissite 000-default.conf
 
-Create the .wsgi File
+## Create the .wsgi File:
 ```
 cd /var/www/FlaskApp
 sudo nano flaskapp.wsgi 
@@ -222,17 +263,21 @@ Add the following code
  sys.path.insert(0,"/var/www/FlaskApp/")
 
  from FlaskApp import app as application
+ 
  application.secret_key = 'Add your secret key'
+ 
 save and exit
 
 Deploying flask app with apache2 is referred from Digital ocean
 
-Installing require modules
+## Installing require modules:
+
 You can either install all modules on your machine or create a virtual environment for the project and install the modules To Create virtual environment: sudo virtualenv venv To activate virtual environment: source venv/bin/activate pip install flask sqlalchemy psycopg2 requests oauth2client
 
 To deactivate virtual environment: deactivate
 
-Setting up your Google Oauth2
+## Setting up your Google Oauth2:
+
 Login to your developer console and select your project and edit OAuth details as following
 
 Javascript origin http://ip.xip.io
@@ -247,11 +292,14 @@ http://ip.xip.io\login
 
 xip.io is a free DNS which will be the same as using IP address
 
-Final Step
+## Final Step:
+
 Restart your apache2 server
 
 sudo service apache2 restart
 
-References used
+## References used:
+
     https://www.digitalocean.com
-    some git hubs to get an idea 
+    
+    
