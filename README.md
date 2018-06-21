@@ -315,7 +315,7 @@ xip.io is a free DNS which will be the same as using IP address
 
 ## Final Step:
 
-Restart your apache2 server
+Restart your apache2 server:
 
 sudo service apache2 restart
 
