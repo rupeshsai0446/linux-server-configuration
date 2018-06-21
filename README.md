@@ -14,7 +14,7 @@ unix
 
 ```
 
-## Grader Key:
+## id_rsa private key:
 
 ```
 -----BEGIN RSA PRIVATE KEY-----
@@ -47,13 +47,6 @@ Ko2IJt9RjQrNt+ow85OWD6VHFPTmyTUqyPrd82ONPwrtzzpq9Tme2ZiU
 
 ```
 
-## id_rsa.pubkey
-
-```
-
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC45CRB4/n3vX5XMnoTpFtdg1awFFVuNWOPa8Lg+Mlo55fXqvrGFOYLJzZTctzEBVewMMfNOGgQhmFB7WFZIgBQ6qUwBy+H9YNCZHEtSdIYVM/GkzvwzW+5FmIRfJrM5FgFgd/MCWf0LlK+7J2csD7EuLM3f7sWfE34Cd61zjPUbN2dxQxM2jRcdhY67Gbj1YzRfQiU/+sZPm0XVqs/72kL8cQwWQcZZ21aW5CCxxMThwbcZ5iDWIZV6Yh+bq87qABRDcGwDuSfh3RuhaHHK2wVPz6aGWEkk4amdjYfF34m7DjWiPEp9F/EfCqciuo2OQl938F302hGmRsde1sgddB/ dell@Rupesh98
-
-```
 
 ## passphrase
 
