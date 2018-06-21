@@ -8,11 +8,6 @@ Server IP Address: 13.232.42.245
 
 Hosted site Url:  http://13.232.42.245.xip.io/
 
-## Grader Password:
-```
-unix
-
-```
 
 ## id_rsa private key:
 
@@ -59,6 +54,12 @@ for passphrase just press enter key
 save private key provided in your local machine and run the following command
 
 ssh -i path/to/privatekey -p 2200 grader@13.232.42.245
+
+## Grader Password:
+```
+unix
+
+```
   
 # Configuring Linux Server:
 
