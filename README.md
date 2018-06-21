@@ -9,10 +9,14 @@ Server IP Address: 13.232.42.245
 Hosted site Url:  http://13.232.42.245.xip.io/
 
 ## Grader Password:
+```
 unix
+
+```
 
 ## Grader Key:
 
+```
 -----BEGIN RSA PRIVATE KEY-----
 MIIEpgIBAAKCAQEAuOQkQeP5971+VzJ6E6RbXYNWsBRVbjVjj2vC4PjJaOeX16r6
 xhTmCyc2U3LcxAVXsDDHzThoEIZhQe1hWSIAUOqlMAcvh/WDQmRxLUnSGFTPxpM7
@@ -40,6 +44,23 @@ dVeICN0q3B59QfV7k2Wxcqyvr2nk21c5Z2vIn9SpigQ4XbfHyaK9S0WrZ8yBra1Q
 dPIDhsQOnL0mEnTGcNHUwK3NNF+cjri4zitnrcKOLorxjUn0gr9DoPKtE1CGnaek
 Ko2IJt9RjQrNt+ow85OWD6VHFPTmyTUqyPrd82ONPwrtzzpq9Tme2ZiU
 -----END RSA PRIVATE KEY-----
+
+```
+
+## id_rsa.pubkey
+
+```
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC45CRB4/n3vX5XMnoTpFtdg1awFFVuNWOPa8Lg+Mlo55fXqvrGFOYLJzZTctzEBVewMMfNOGgQhmFB7WFZIgBQ6qUwBy+H9YNCZHEtSdIYVM/GkzvwzW+5FmIRfJrM5FgFgd/MCWf0LlK+7J2csD7EuLM3f7sWfE34Cd61zjPUbN2dxQxM2jRcdhY67Gbj1YzRfQiU/+sZPm0XVqs/72kL8cQwWQcZZ21aW5CCxxMThwbcZ5iDWIZV6Yh+bq87qABRDcGwDuSfh3RuhaHHK2wVPz6aGWEkk4amdjYfF34m7DjWiPEp9F/EfCqciuo2OQl938F302hGmRsde1sgddB/ dell@Rupesh98
+
+```
+
+## passphrase
+
+```
+for passphrase just press enter key
+
+```
 
 ## How to connect as grader:
 save private key provided in your local machine and run the following command
