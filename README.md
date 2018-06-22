@@ -287,7 +287,31 @@ Deploying flask app with apache2 is referred from Digital ocean
 
 ## Installing require modules:
 
-You can either install all modules on your machine or create a virtual environment for the project and install the modules To Create virtual environment: sudo virtualenv venv To activate virtual environment: source venv/bin/activate pip install flask sqlalchemy psycopg2 requests oauth2client
+You can either install all modules on your machine or create a virtual environment for the project and install the modules.
+
+To Create virtual environment: sudo virtualenv venv
+
+To activate virtual environment: source venv/bin/activate 
+
+To install required modules: 
+
+sudo apt-get install python
+
+sudo apt install python-pip
+
+sudo pip3 install --upgrade pip
+
+sudo pip3 install Flask
+
+sudo pip3 install httplib2
+
+sudo pip3 install requests
+
+sudo pip3 install oauth2client
+
+sudo pip3 install sqlalchemy
+
+sudo apt install apache2                  
 
 To deactivate virtual environment: deactivate
 
@@ -314,7 +338,18 @@ Restart your apache2 server:
 sudo service apache2 restart
 
 ## References used:
+    
+Shell Commands
 
-    https://www.digitalocean.com
+Getting Started with Amazon Lightsail
+
+Set up SSH for your Linux/Unix-based Lightsail instances
+
+How To Create a Sudo User on Ubuntu
+
+http://flask.pocoo.org/docs/0.12/deploying/#deployment
+
+http://flask.pocoo.org/docs/0.12/deploying/mod_wsgi/
+
     
     
